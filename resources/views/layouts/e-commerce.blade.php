@@ -63,7 +63,7 @@
                                 <div class="dropdown-menu">
                                     <a href="{{route('wishlist_page')}}" class="dropdown-item">Wishlist</a>
                                     <a href="{{route('login')}}" class="dropdown-item">Login & Register</a>
-                                    <a href="{{route('contact')}}" class="dropdown-item">Contact Us</a>
+                                    <a href="{{route('contact.index')}}" class="dropdown-item">Contact Us</a>
                                 </div>
                             </div>
                         </div>

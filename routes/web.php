@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\SiteController;
+use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,10 +15,13 @@ Route::get('/product-detail/{id}', [SiteController::class,'product_detail']) ->n
 Route::get('/productBycategory', [SiteController::class,'productBycategory']) ->name('productBycategory');
 Route::get('/cart-page', [SiteController::class,'cart']) -> name('cart_page');
 Route::get('/checkout', [SiteController::class,'checkout']) ->name('checkout');
-Route::get('/contact', [SiteController::class,'contact']) ->name('contact');
+//Route::get('/contact', [SiteController::class,'contact']) ->name('contact');
 Route::get('/login', [SiteController::class,'login']) ->name('login');
 Route::get('/my-account', [SiteController::class,'my_account'])->name('my_account');
 Route::get('/wishlist-page', [SiteController::class,'wishlist']) ->name('wishlist_page');
+
+// clase 09/09/2024 Contact
+Route::resource('contact', ContactController::class);
 
 Route::get('/profile/{username}', [SiteController::class,'profile']);
 /*
