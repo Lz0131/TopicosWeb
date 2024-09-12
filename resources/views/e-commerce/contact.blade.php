@@ -60,7 +60,7 @@
                                     value="{{ old('fullname') }}" />
                             </div>
                             <div class="col-md-6">
-                                <input type="email" name="email" class="form-control" placeholder="Your Email"  value="{{ old('email')}}"/>
+                                <input type="email" name="email" class="form-control" placeholder="Your Email" value="{{ old('email')}}" />
                             </div>
                         </div>
                         <div class="form-group">

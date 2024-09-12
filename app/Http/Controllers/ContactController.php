@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Contact;
+use App\Mail\ContactFormMail;
+use Illuminate\Support\Facades\Mail;
+
 
 class ContactController extends Controller
 {
@@ -46,6 +49,13 @@ class ContactController extends Controller
             $contact->subject = $request->input('subject');
             $contact->message = $request->input('message');
             $contact->save();
+            // Enviar el correo electrónico
+            Mail::to('gamez.dulce.1mm@gmail.com')->send(new ContactFormMail([
+                'name' => $request->input('fullname'),
+                'email' => $request->input('email'),
+                'subject' => $request->input('subject'),
+                'message' => $request->input('message')
+            ])); 
             return redirect()->route('contact.index')->with('success', 'You message has beensent.');
         }
     }

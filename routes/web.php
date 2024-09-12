@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
@@ -22,6 +23,8 @@ Route::get('/wishlist-page', [SiteController::class,'wishlist']) ->name('wishlis
 
 // clase 09/09/2024 Contact
 Route::resource('contact', ContactController::class);
+// practica 1
+Route::resource('review', ReviewController::class);
 
 Route::get('/profile/{username}', [SiteController::class,'profile']);
 /*

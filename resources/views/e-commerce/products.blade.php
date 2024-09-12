@@ -77,7 +77,7 @@
                                         <div class="product-action">
                                             <a href="/product-detail/{{$p->id}}"><i class="fa fa-cart-plus"></i></a>
                                             <a href="#"><i class="fa fa-heart"></i></a>
-                                            <a href="#"><i class="fa fa-search"></i></a>
+                                            <a href="/product-detail/{{$p->id}}"><i class="fa fa-search"></i></a>
                                         </div>
                                     </div>
                                     <div class="product-price">

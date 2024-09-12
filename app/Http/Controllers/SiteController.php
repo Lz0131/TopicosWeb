@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Reviews;
 
 class SiteController extends Controller
 {
@@ -23,7 +24,10 @@ class SiteController extends Controller
 
     public function product_detail($product_id){
         $product = Product::find($product_id);
-        return view('e-commerce.product-detail', compact('product'));
+        $specifications = json_decode($product->specification, true);
+        // para traer la ultima review
+        $reviews = Reviews::where('product_id', $product_id)->latest()->first(); 
+        return view('e-commerce.product-detail', compact('product', 'specifications', 'reviews'));
     }
 
     public function productBycategory(){
