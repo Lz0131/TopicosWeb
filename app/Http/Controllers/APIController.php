@@ -7,9 +7,20 @@ use Illuminate\Http\Request;
 
 class APIController extends Controller
 {
-    public function products()
+    public function products(Request $request)
     {
-        return response()-> json(Product::all());
+        // Obtener el ID de la categoría del request (puede ser opcional)
+    $categoryId = $request->input('category_id');
+
+    if ($categoryId) {
+        // Filtrar productos por categoría
+        $products = Product::where('category_id', $categoryId)->get();
+    } else {
+        // Obtener todos los productos si no se selecciona una categoría
+        $products = Product::all();
+    }
+
+    return response()->json(["data" => $products]);
     }
 
     public function categories()
