@@ -3,6 +3,7 @@
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\AdminProductsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,6 +21,7 @@ Route::get('/checkout', [SiteController::class,'checkout']) ->name('checkout');
 Route::get('/login', [SiteController::class,'login']) ->name('login');
 Route::get('/my-account', [SiteController::class,'my_account'])->name('my_account');
 Route::get('/wishlist-page', [SiteController::class,'wishlist']) ->name('wishlist_page');
+Route::get('/admin/products', [AdminProductsController::class, 'index'])->name('admin.products');
 
 // clase 09/09/2024 Contact
 Route::resource('contact', ContactController::class);
