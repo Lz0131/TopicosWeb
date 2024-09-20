@@ -1,15 +1,16 @@
 $(document).ready(function(){
     init();
+    
     // llena el combo box con las opciones
-    $.ajax({
+    /*$.ajax({
         url: '/api/categories',
         type: 'GET',
         success: function (data) {
             var select = $('#cboxcategory');
             select.empty(); // Limpiar opciones previas
-            select.append('<option value=""> All </option>'); //opcion defaul
+            select.append('<option value="" class="dropdown-item"> All </option>'); //opcion defaul
             $.each(data, function (index, category) {
-                select.append('<option value="' + category.id + '">' + category.name + '</option>');
+                select.append('<option class="dropdown-item" value="' + category.id + '">' + category.name + '</option>');
             });
         },
         error: function (xhr, status, error) {
@@ -19,7 +20,7 @@ $(document).ready(function(){
     $('#cboxcategory').on('change', function () {
         var categoryId = $(this).val();
         updateTables(categoryId);
-    });
+    }); */
 });
 
 function init()
@@ -34,8 +35,21 @@ function init()
             { data: 'sale_price' },
             { data: 'quantity' },
             { data: 'size' },
-            { data: 'color'}
+            { data: 'color'},
+            {data: 'category.name'}
         ]
+    });
+    $('#cmbCategoryList').select2({
+        ajax: {
+          url: '/api/categories',
+          dataType: 'json'
+          // Additional AJAX parameters go here; see the end of this chapter for the full code of this example
+        }
+      });
+      $('#cmbCategoryList').on('select2:select', function (e) {
+        var data = e.params.data;
+        console.log("You selected: "+ data.id);
+        $("#tblProducts2").DataTable().ajax.url("/api/products/" +data.id).load();
     });
     /*$.ajax({
         url: '/api/categories',
